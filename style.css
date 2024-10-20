@@ -4,6 +4,8 @@ body{
 
 .title {
     background-color: cornflowerblue;
-    size: 25vh;
+    size: 50vh;
     color:yellow;
+    justify-content: center;
+    align-items: center;
 }
