@@ -9,3 +9,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+.content {
+    size: 25%;
+    background-color: green;
+    color: red;
+}
