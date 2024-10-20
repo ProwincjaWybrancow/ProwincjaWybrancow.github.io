@@ -1,5 +1,8 @@
-.body{
+body{
     margin: 0;
+}
+
+.title {
     background-color: cornflowerblue;
     size: 25vh;
     color:brown;
