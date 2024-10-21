@@ -12,17 +12,26 @@
     <script>
         async function fetchUsers() {
             // Użyj publicznego IP lub dynamicznego DNS
-            const response = await fetch('http://217.173.188.254:5000/api/users');
-            const users = await response.json();
-
+            const response = await fetch('http://moje_ip/api/users');
+            const rawUsers = await response.json();
+    
             const userList = document.getElementById('user-list');
-            users.forEach(user => {
+    
+            // Iteruj po odpowiedzi i sparsuj dane JSON wewnątrz tablic
+            rawUsers.forEach(userArray => {
+                // Parsowanie JSON, który jest zakodowanym stringiem w tablicy
+                const user = JSON.parse(userArray[0]);
+    
+                // Wyciągnięcie ID i nazw postaci (chars)
+                const chars = user.chars.join(', ');  // Złącz wszystkie postacie w jeden ciąg
+    
+                // Tworzenie elementu listy i dodanie do DOM
                 const listItem = document.createElement('li');
-                listItem.textContent = `ID: ${user.id}, Name: ${user.name}, Age: ${user.age}`;
+                listItem.textContent = `ID: ${user.id}, Characters: ${chars}`;
                 userList.appendChild(listItem);
             });
         }
-
+    
         fetchUsers();
     </script>
 </body>
