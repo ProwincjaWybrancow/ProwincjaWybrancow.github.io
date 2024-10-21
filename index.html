@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>Lista użytkowników</title>
 </head>
 <body>
-    <div class="title">
-        Witaj przyszła strono!
-    </div>
-    <div class="content">
-        Wiecej contentu, zeby zobaczyc, czy dziala!
-    </div>
+    <h1>Lista użytkowników</h1>
+    <ul id="user-list"></ul>
+
+    <script>
+        async function fetchUsers() {
+            // Użyj publicznego IP lub dynamicznego DNS
+            const response = await fetch('http://217.173.188.254:5000/api/users');
+            const users = await response.json();
+
+            const userList = document.getElementById('user-list');
+            users.forEach(user => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `ID: ${user.id}, Name: ${user.name}, Age: ${user.age}`;
+                userList.appendChild(listItem);
+            });
+        }
+
+        fetchUsers();
+    </script>
 </body>
 </html>
